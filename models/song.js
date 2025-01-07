@@ -11,7 +11,7 @@ const songSchema = new mongoose.Schema({
     artist:{type: String, required: true},
     // song:{type: String, required: true},
     file: { type: String, required: true },
-    img:{type: String, required: true},
+    img:{type: Buffer, required: true},
     duration:{type: Number, required: true},
 })
 
@@ -21,7 +21,7 @@ const validate = (song)=>{
         artist: Joi.string().required(),
         // song: Joi.string().required(),
         file: Joi.string().uri().required(),
-        img: Joi.string().required(),
+        img: Joi.object().required(),
         duration: Joi.number().required(),
     })
     return schema.validate(song);
@@ -29,4 +29,4 @@ const validate = (song)=>{
 
 const Song = mongoose.model("Song", songSchema)
 
-model.exports = {Song, validate}
+module.exports = {Song, validate}
