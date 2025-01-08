@@ -7,6 +7,7 @@ const {
   loginHandler,
 } = require("./controllers/userController");
 const { isAuthorised } = require("./middleware/isAuth");
+const { isAdmin } = require("./middleware/isAdmin");
 const app = express();
 
 connectDb();
@@ -28,6 +29,10 @@ app.get("/protected", isAuthorised, (req, res)=>{
   res.status(200).send("This is a protected route.");
 })
 
+
+app.get("/admin", isAdmin, (req, res)=>{
+  res.status(200).send("This is a admin route.");
+});
 
 
 const port = process.env.PORT || 8080;
