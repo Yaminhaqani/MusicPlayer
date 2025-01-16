@@ -21,10 +21,7 @@ const registerHandler = async (req, res) => {
   //   name,
   //   email,
   //   password: hashedPassword,
-  //   gender,
-  //   month,
-  //   date,
-  //   year,
+  //   birthDate,
   // });
 
   //   if (createUser) {
@@ -37,35 +34,30 @@ const registerHandler = async (req, res) => {
   const { error } = validate(req.body);
 
   if (error) {
-    return res.status(400).send(error.details[0].message);
+    return res.status(400).json({ message: error.details[0].message });
   }
 
   try {
     // Create a new user using the validated input
 
-    const { name, email, password, gender, month, date, year } = req.body;
+    const { username, email, password, gender, birthDate } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const createUser = await User.create({
-      name: name,
+      name: username,
       email: email,
       password: hashedPassword,
       gender: gender,
-      month: month,
-      date: date,
-      year: year,
+      birthDate: birthDate,
     });
 
     if (createUser) {
-      res
-        .status(201)
-        .send({ message: "User created successfully", user: createUser });
+      res.status(201).json({ message: "User created successfully"})
     }
   } catch (err) {
     res
-      .status(500)
-      .send({ message: "Error creating user", error: err.message });
+    res.status(500).json({ message: "Error creating user", error: err.message });
   }
 };
 

@@ -8,6 +8,9 @@ const {
 } = require("./controllers/userController");
 const { isAuthorised } = require("./middleware/isAuth");
 const { isAdmin } = require("./middleware/isAdmin");
+const songRouter = require('./routes/songRouter');
+
+
 const app = express();
 
 connectDb();
@@ -24,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/user/register", registerHandler);
-app.get("/user/login", loginHandler);
+app.post("/user/login", loginHandler);
 app.get("/protected", isAuthorised, (req, res)=>{
   res.status(200).send("This is a protected route.");
 })
@@ -33,6 +36,13 @@ app.get("/protected", isAuthorised, (req, res)=>{
 app.get("/admin", isAdmin, (req, res)=>{
   res.status(200).send("This is a admin route.");
 });
+
+app.get("/user/verify", isAuthorised, (req, res) => {
+  res.status(200).json({ message: "Token is valid." });
+});
+
+// Use the song upload route
+app.use(songRouter);
 
 
 const port = process.env.PORT || 8080;

@@ -10,8 +10,8 @@ const songSchema = new mongoose.Schema({
     title:{type: String, required: true},
     artist:{type: String, required: true},
     // song:{type: String, required: true},
-    file: { type: String, required: true },
-    img:{type: Buffer, required: true},
+    song: { type: String, required: true },
+    img:{type: String, required: true},
     duration:{type: Number, required: true},
 })
 
@@ -20,8 +20,8 @@ const validate = (song)=>{
         title: Joi.string().required(),
         artist: Joi.string().required(),
         // song: Joi.string().required(),
-        file: Joi.string().uri().required(),
-        img: Joi.object().required(),
+        song: Joi.string().uri().required(),
+        img: Joi.string().uri().required(),
         duration: Joi.number().required(),
     })
     return schema.validate(song);
