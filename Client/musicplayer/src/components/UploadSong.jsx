@@ -4,7 +4,14 @@ import { FaRegFolderOpen } from "react-icons/fa";
 import { IoImagesOutline } from "react-icons/io5";
 import './Register.css'
 
+import UseAuth from '../utils/UseAuth';
+import useAdminAuth from '../utils/UseAdminAuth';
+
 const UploadSong = () => {
+
+  UseAuth();
+  const { isAdmin, loading: adminLoading, error: adminError } = useAdminAuth();
+
   const [title, setTitle] = useState('');
   const [artist, setArtist] = useState('');
   const [songFile, setSongFile] = useState(null);
@@ -72,6 +79,14 @@ const UploadSong = () => {
       setMessage('Error uploading song: ' + error.response.data.message);
     }
   };
+
+  if (adminLoading) {
+    return <p className="text-gray-300">Verifying...</p>; // Show while checking admin status
+  }
+
+  if (adminError || !isAdmin) {
+    return <p className="text-red-500">You are not an admin. Access Denied!</p>; // If not an admin, show access denied message
+  }
 
   return (
     <div className='Register flex flex-col w-full h-[87.3vh] justify-center items-center bg-gray-950 border-t-2 border-gray-800 font-roboto'>

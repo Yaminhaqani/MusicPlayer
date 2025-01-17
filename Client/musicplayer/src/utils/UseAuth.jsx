@@ -17,11 +17,24 @@ const UseAuth = () => {
 
       try {
         const url = "http://localhost:4000/user/verify";
-        const response = await axios.get(url, {
-          headers: {
-            Authorization: `Bearer ${token}`, // Send token with Bearer scheme
-          },
-        });
+
+        // for get method
+        // const response = await axios.get(url, {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`, // Send token with Bearer scheme
+        //   },
+        // });
+
+        // for post method 
+        const response = await axios.post(
+          url, 
+          {}, // Empty body for the request
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // Send token in Authorization header
+            },
+          }
+        );
 
         if (response.status === 200) {
           // Log success message from backend if token is valid
