@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Protected from "./components/Protected";
 import UploadSong from "./components/UploadSong";
+import AllSongs from "./components/AllSongs";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/user/login" element={<Login />} />
           <Route path="/protected" element={<Protected />} />
           <Route path="/admin/UploadSong" element={<UploadSong />} />
+          <Route path="/AllSongs" element={<AllSongs />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>

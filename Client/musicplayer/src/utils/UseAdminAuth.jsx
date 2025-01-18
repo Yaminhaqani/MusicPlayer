@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const useAdminAuth = () => {
   const [isAdmin, setIsAdmin] = useState(null); // null indicates verification in progress
   const [loading, setLoading] = useState(true); // To track if the verification process is ongoing
   const [error, setError] = useState(null); // To capture any error message
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     const verifyAdmin = async () => {
@@ -40,7 +39,7 @@ const useAdminAuth = () => {
     };
 
     verifyAdmin();
-  }, [navigate]);
+  }, []);
 
   return { isAdmin, loading, error }; // Return admin status, loading, and error
 };

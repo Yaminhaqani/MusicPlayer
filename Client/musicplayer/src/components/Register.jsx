@@ -106,7 +106,7 @@ const Register = () => {
           Gender
         </label>
         <select
-          className="sm:h-[36.5px] h-[35px]"
+          className="sm:h-[36.5px] h-[35px]  text-gray-300"
           id="gender"
           value={gender}
           onChange={(e) => setGender(e.target.value)}
