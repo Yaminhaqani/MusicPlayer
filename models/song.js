@@ -12,7 +12,29 @@ const songSchema = new mongoose.Schema({
     // song:{type: String, required: true},
     song: { type: String, required: true },
     img:{type: String, required: true},
+    genre: {
+        type: String,
+        enum: [
+            "Pop",
+            "Rock",
+            "Hip-Hop",
+            "Jazz",
+            "Classical",
+            "Electronic",
+            "Country",
+            "R&B",
+            "Reggae",
+            "Metal",
+            "Folk",
+            "Blues",
+            "Latin",
+            "Islamic",
+            "Qawwali",
+        ], 
+        required: true,
     duration:{type: Number, required: true},
+   
+    },
 })
 
 const validate = (song)=>{
@@ -22,7 +44,25 @@ const validate = (song)=>{
         // song: Joi.string().required(),
         song: Joi.string().uri().required(),
         img: Joi.string().uri().required(),
+        genre: Joi.string().valid(
+            "Pop",
+            "Rock",
+            "Hip-Hop",
+            "Jazz",
+            "Classical",
+            "Electronic",
+            "Country",
+            "R&B",
+            "Reggae",
+            "Metal",
+            "Folk",
+            "Blues",
+            "Latin",
+            "Islamic",
+            "Qawwali",
+        ).required(),
         duration: Joi.number().required(),
+        
     })
     return schema.validate(song);
 }

@@ -33,11 +33,11 @@ app.get("/protected", isAuthorised, (req, res)=>{
 })
 
 
-app.get("/admin", isAdmin, (req, res)=>{
+app.post("/admin", isAdmin, (req, res)=>{
   res.status(200).send("This is a admin route.");
 });
 
-app.get("/user/verify", isAuthorised, (req, res) => {
+app.post("/user/verify", isAuthorised, (req, res) => {
   res.status(200).json({ message: "Token is valid." });
 });
 

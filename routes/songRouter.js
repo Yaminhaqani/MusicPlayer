@@ -36,9 +36,8 @@ router.post('/admin/UploadSong', upload.fields([
     { name: 'song', maxCount: 1 }    // Song file upload field
   ]), async (req, res) => {
 
-    const { title, artist } = req.body;
-    console.log('Files:', req.files);
-console.log('Body:', req.body);
+    const { title, artist, genre } = req.body;
+
   
     const imgFile = req.files.img ? req.files.img[0] : null;  
     // checks if a file was uploaded under the img field. If so, it gets the first (and only) file from the array (req.files.img[0]), otherwise it returns null.
@@ -58,13 +57,13 @@ console.log('Body:', req.body);
 
       // Upload image to Cloudinary
       const imgUpload = await cloudinary.uploader.upload(imgFile.path, {
-        folder: 'Home/MusicPlayer/images',
+        folder: 'MusicPlayer/images',
       });
   
       // Upload song to Cloudinary (set resource type to 'auto' for audio)
       const songUpload = await cloudinary.uploader.upload(songFile.path, {
         resource_type: 'auto', // For audio files
-        folder: 'Home/MusicPlayer/songs',
+        folder: 'MusicPlayer/songs',
       });
 
       // Extract duration from Cloudinary's song upload metadata
@@ -76,13 +75,15 @@ console.log('Body:', req.body);
         artist,
         song: songUpload.secure_url,
         img: imgUpload.secure_url,
+        genre,
         duration: duration,
+        
       });
       
   
       // Delete the local uploaded files after processing
-      fs.unlinkSync(imgFile.path);
-      fs.unlinkSync(songFile.path);
+      fs.unlinkSync(path.join(__dirname, 'uploads', imgFile.filename));
+      fs.unlinkSync(path.join(__dirname, 'uploads', songFile.filename));
   
       res.status(201).send({ message: 'Song uploaded successfully!', song: newSong });
   
