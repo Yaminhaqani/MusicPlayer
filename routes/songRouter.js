@@ -51,6 +51,8 @@ router.post('/admin/UploadSong', upload.fields([
 
       const existingSong = await Song.findOne({ title, artist });
       if (existingSong) {
+        fs.unlinkSync(path.join(__dirname, 'uploads', imgFile.filename));
+        fs.unlinkSync(path.join(__dirname, 'uploads', songFile.filename));
         return res.status(400).send({ message: 'Song already exists in the database.' });
       }
 
