@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { MdHomeFilled } from "react-icons/md";
+import React, { useContext, useState } from "react";
+import { MdHomeFilled, MdLogout } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
-import SearchBar from "./search";
+import SearchBar from "./Search";
 import { FiSearch } from "react-icons/fi";
 import "animate.css";
+import { MyContext } from "../context/Context";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const Navbar = () => {
   const [showSideNav, setShowSideNav] = useState(false);
   const [searchWidth, setSearchWidth] = useState(false);
+  const [profileChange, setProfileChange] = useState(false)
+  const {user, loggedIn, logout} = useContext(MyContext);
+
+
+  const navigate = useNavigate();
 
   const handleNav = () => {
     setShowSideNav(!showSideNav);
@@ -17,22 +25,29 @@ const Navbar = () => {
     setSearchWidth(!searchWidth);
   };
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const handleLogout = () => {
+    logout(); // Clear token and update state
+    navigate('/user/login'); // Redirect to login
+};
+
+const handleprofileChange = ()=>{
+  setProfileChange(!profileChange);
+}
 
   //  const token = localStorage.getItem('token');
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setLoggedIn(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     setLoggedIn(true);
+  //   }
+  // }, []);
 
   return (
     <nav className="w-full bg-black h-20">
       <div className="flex items-center h-full justify-between">
         <div
           onClick={handleNav}
-          className="sm:hidden flex justify-end items-center ml-2 w-fit h-full"
+          className="sm:hidden flex justify-end items-center ml-2 w-fit h-full z-10"
         >
           <GiHamburgerMenu className="text-white w-7 h-7" />
 
@@ -45,12 +60,28 @@ const Navbar = () => {
               } 
               transition-transform duration-300 ease-in-out`}
           >
-            <li className="w-full h-fit flex items-center border border-red-500 hover:bg-[rgb(42,42,42)]">
-              <button>
-                <MdHomeFilled className="text-gray-50 h-6 w-6" />
+            <li className="w-full h-fit border border-red-500 hover:bg-[rgb(42,42,42)]">
+              <button className="flex items-center">
+              <Link to="/AllSongs">
+                <MdHomeFilled className="text-gray-50 h-5 w-5" />
+                </Link>
+                <span className="text-white ml-2">Home</span>
               </button>
-              <span className="text-white">Home</span>
+              
             </li>
+            
+            {loggedIn && (
+              <li  className="w-full h-fit border border-red-500 hover:bg-[rgb(42,42,42)]">
+                <button 
+                    onClick={handleLogout}
+                    className="flex items-center"
+                >
+                    <MdLogout className="text-white h-5 w-5" />
+                    <span className="text-white ml-2">Logout</span>
+                </button>
+                </li>
+                
+            )}
             {/* Add more navigation items */}
           </ul>
         </div>
@@ -70,7 +101,9 @@ const Navbar = () => {
         >
           <li className="border-none rounded-full flex bg-[rgb(42,42,42)] p-2 mr-4">
             <button>
+              <Link to="/AllSongs">
               <MdHomeFilled className="text-gray-50 h-6 w-6" />
+              </Link>
             </button>
           </li>
           {loggedIn && (
@@ -83,7 +116,7 @@ const Navbar = () => {
         {loggedIn && (
           <div
             onClick={handleSearch}
-            className="flex w-fit h-fit items-center sm:hidden border absolute right-[20.5vw]"
+            className="flex w-fit h-fit items-center sm:hidden absolute right-[20.5vw]"
           >
             <FiSearch className="text-gray-300 w-5 h-5" />
           </div>
@@ -100,9 +133,43 @@ const Navbar = () => {
           />
         </div>
 
-        <div className="h-full flex items-center mr-2">
-          <img className="w-9 h-9 rounded-full bg-white" src="" alt="Profile" />
+        <div className="">
+        {loggedIn && user &&(
+          <div className=" flex gap-20 items-center">
+                <button 
+                    onClick={handleLogout}
+                    className=" hidden sm:flex text-gray-200 bg-blue-800 px-[3px] rounded-md hover:shadow-[1px_1px_6px_purple]"
+                >
+                    Logout
+                </button>
+
+                <div onClick={handleprofileChange} className=" flex items-center mr-2 w-9 h-9 rounded-full overflow-hidden border border-transparent ring-2 ring-cyan-400 ring-offset-1 shadow-[0_0_10px_cyan] animate-none">
+ <img className="w-full h-full object-cover object-center bg-white" src={user.profilePic} alt="Profile" />
+</div>
+
+<ul
+onClick={()=>setProfileChange(!profileChange)}
+  className={`bg-blue-500 text-white p-4 rounded-lg absolute top-[70px] right-1
+    ${profileChange
+      ? "animate__animated animate__fadeInDown opacity-100 visible"
+      : "animate__animated animate__fadeOutUp opacity-0 invisible"}
+    transition-all duration-300 ease-in-out`}
+>
+<li>
+    <Link to="/user/settings">Settings</Link>
+  </li>
+  <li>
+    <Link to="/user-playlists">Playlists</Link>
+  </li>
+  
+</ul>
+      
+                </div>
+            )}
         </div>
+
+  
+       
       </div>
     </nav>
   );

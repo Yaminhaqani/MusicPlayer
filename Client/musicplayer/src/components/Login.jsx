@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Register.css'
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { MyContext } from '../context/Context';
 
 const Login = () => {
+
+  const {setLoggedIn} = useContext(MyContext);
 
      const [email , setEmail] = useState("");
       const [password , setPassword] = useState("");
@@ -25,9 +28,10 @@ const Login = () => {
           if(response.status === 200){
             const token = response.data.token; 
             localStorage.setItem('token', token);
+            setLoggedIn(true);
             toast.success(response.data.message);
             setTimeout(() => {
-              navigate('/protected');
+              navigate('/AllSongs');
             }, 3000);
 
           } else{
@@ -72,6 +76,10 @@ const Login = () => {
             <p className="text-gray-300">
             Don't have an account? <Link to="/user/register" className="text-blue-500">Register with us</Link>
           </p>
+          <p className="text-gray-300">
+           <Link to="/user/forgotPass" className="text-blue-500">Forgot password?</Link>
+          </p>
+          
 
         </form>
 

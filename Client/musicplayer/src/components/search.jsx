@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext} from "react";
 import { FiSearch } from "react-icons/fi";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { AudioContext } from "../context/AudioContext";
 
 const SearchBar = ({ searchWidth, setSearchWidth }) => {
-  const [query, setQuery] = useState("");
+  const {query, setQuery }= useContext(AudioContext)
 
   const handleChange = (e) => {
     setQuery(e.target.value);
