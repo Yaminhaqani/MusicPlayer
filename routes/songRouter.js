@@ -7,6 +7,7 @@ const fs = require('fs');  // For deleting local files after upload
 const path = require('path'); // For handling file paths
 
 
+
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
@@ -68,8 +69,10 @@ router.post('/admin/UploadSong', upload.fields([
         folder: 'MusicPlayer/songs',
       });
 
+
       // Extract duration from Cloudinary's song upload metadata
     const duration = songUpload.duration;  // Duration is available in the response metadata
+    
   
       // Create a new song document in MongoDB
       const newSong = await Song.create({
@@ -78,9 +81,11 @@ router.post('/admin/UploadSong', upload.fields([
         song: songUpload.secure_url,
         img: imgUpload.secure_url,
         genre,
-        duration: duration,
+        duration:duration,
         
       });
+     
+      
       
   
       // Delete the local uploaded files after processing

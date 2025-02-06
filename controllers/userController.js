@@ -1,3 +1,5 @@
+const multer = require("multer");
+const { Song } = require("../models/song");
 const { User, validate } = require("../models/user");
 const bcrypt = require("bcryptjs");
 
@@ -61,6 +63,8 @@ const registerHandler = async (req, res) => {
   }
 };
 
+
+
 const loginHandler = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -93,4 +97,22 @@ const loginHandler = async (req, res) => {
   }
 };
 
-module.exports = { registerHandler, loginHandler };
+const getAllSongs = async (req , res)=>{
+  try {
+    const allSongs = await Song.find();
+
+    if(!allSongs || allSongs.length === 0){
+      return res.status(404).json({ message: "No songs found" });
+    }
+    return res.status(200).json({songs: allSongs});
+    
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Error retrieving songs"});
+    
+  }
+
+  
+}
+
+module.exports = { registerHandler, loginHandler, getAllSongs};

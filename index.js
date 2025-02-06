@@ -5,10 +5,18 @@ const { connectDb } = require("./config/connectDb");
 const {
   registerHandler,
   loginHandler,
+  getAllSongs,
 } = require("./controllers/userController");
 const { isAuthorised } = require("./middleware/isAuth");
 const { isAdmin } = require("./middleware/isAdmin");
 const songRouter = require('./routes/songRouter');
+const playlistRouter = require('./routes/playlistRouter');
+const profilePicRouter = require('./routes/profilePicRouter');
+const userDetailsRouter = require('./routes/userDetailsRouter');
+const changePassRouter = require('./routes/changePassRouter');
+const forgotPassRouter = require('./routes/forgotPassRouter');
+const resetPassRouter = require('./routes/resetPassRouter');
+
 
 
 const app = express();
@@ -43,7 +51,15 @@ app.post("/user/verify", isAuthorised, (req, res) => {
 
 // Use the song upload route
 app.use(songRouter);
+app.use(playlistRouter);
 
+app.use(profilePicRouter);
+app.use(userDetailsRouter);
+app.use(changePassRouter);
+app.use(forgotPassRouter);
+app.use(resetPassRouter);
+
+app.get("/allSongs", getAllSongs);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {

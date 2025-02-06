@@ -32,9 +32,8 @@ const songSchema = new mongoose.Schema({
             "Qawwali",
         ], 
         required: true,
-    duration:{type: Number, required: true},
-   
     },
+    duration:{type: Number, required: true},
 })
 
 const validate = (song)=>{

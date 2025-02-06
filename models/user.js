@@ -7,10 +7,11 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  profilePic: { type: String},
   gender: { type: String, required: true },
   birthDate: { type: Date, required: true },
   likedSongs: { type: [String], default: [] },
-  playlist: { type: [String], default: [] },
+  playlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "Playlist" }], // Reference to Playlist
   isAdmin: { type: Boolean, default: false },
 });
 
