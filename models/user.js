@@ -13,7 +13,9 @@ const userSchema = new mongoose.Schema({
   likedSongs: { type: [String], default: [] },
   playlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "Playlist" }], // Reference to Playlist
   isAdmin: { type: Boolean, default: false },
-});
+},
+{timestamps: true}  // Auto-generates createdAt & updatedAt
+);
 
 
 

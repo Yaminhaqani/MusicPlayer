@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken")
 
 const isAdmin = async(req,res,next)=>{
        
-            console.log(req.header);
             const authHeader = req.header("Authorization");
 
             

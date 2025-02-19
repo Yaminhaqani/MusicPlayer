@@ -34,7 +34,9 @@ const songSchema = new mongoose.Schema({
         required: true,
     },
     duration:{type: Number, required: true},
-})
+},
+{timestamps: true} 
+)
 
 const validate = (song)=>{
     const schema = Joi.object({

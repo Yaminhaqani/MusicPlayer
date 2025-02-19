@@ -16,6 +16,8 @@ const userDetailsRouter = require('./routes/userDetailsRouter');
 const changePassRouter = require('./routes/changePassRouter');
 const forgotPassRouter = require('./routes/forgotPassRouter');
 const resetPassRouter = require('./routes/resetPassRouter');
+const analyticsRoutes = require('./routes/analyticsRoutes');
+const totalCountRouter = require('./routes/totalCountRouter');
 
 
 
@@ -58,6 +60,8 @@ app.use(userDetailsRouter);
 app.use(changePassRouter);
 app.use(forgotPassRouter);
 app.use(resetPassRouter);
+app.use(totalCountRouter);
+app.use('/api/analytics', analyticsRoutes);
 
 app.get("/allSongs", getAllSongs);
 
