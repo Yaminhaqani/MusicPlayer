@@ -6,7 +6,7 @@ import { createContext, useEffect, useRef, useState } from "react";
 
 export const AudioContext = createContext();
 
-export const AudioProvider = ({children})=>{
+export const AudioProvider = ({children, loggedIn})=>{
      const [songs, setSongs]= useState([]);
      const audioRef = useRef(new Audio());
       const [currentSong, setCurrentSong] = useState(null);
@@ -16,6 +16,17 @@ export const AudioProvider = ({children})=>{
        const [showPlaylistMenu, setShowPlaylistMenu] = useState(false);
        const [query, setQuery] = useState(""); //Search Songs
 
+
+
+       useEffect(()=>{
+         if (!loggedIn) {
+       
+           
+           audioRef.current.pause();
+           setIsPlaying(false);
+           return;
+         }
+       },[loggedIn])
 
        const handlePlayPause = (song) =>{
 
@@ -30,7 +41,6 @@ export const AudioProvider = ({children})=>{
         } else{
           setCurrentSong(song._id);
           audioRef.current.src = song.song;
-        //   audioRef.current.play();
           audioRef.current.load();
           audioRef.current.play();
           setIsPlaying(true);

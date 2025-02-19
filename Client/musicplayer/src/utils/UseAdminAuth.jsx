@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const useAdminAuth = () => {
-  const [isAdmin, setIsAdmin] = useState(null); // null indicates verification in progress
+  const [isAdmin, setIsAdmin] = useState(false); // null indicates verification in progress
   const [loading, setLoading] = useState(true); // To track if the verification process is ongoing
   const [error, setError] = useState(null); // To capture any error message
 
@@ -26,22 +26,22 @@ const useAdminAuth = () => {
             },
           }
         );
-
-        if (response.status === 200) {
-          setIsAdmin(true); // Admin access granted
-        }
+      
+        setIsAdmin(response.status === 200);
+          
       } catch (err) {
-        setError(err.response?.data?.message || "Admin verification failed."); // Capture error message
-        setIsAdmin(false); // If the error occurs, we assume it's a non-admin
+        console.log("Admin verification failed:", err.response?.data?.message);
+        setError(err.response?.data?.message || "Admin verification failed."); 
+        setIsAdmin(false); 
       } finally {
-        setLoading(false); // Stop loading regardless of success or failure
+        setLoading(false); 
       }
     };
 
     verifyAdmin();
-  }, []);
+  }, [isAdmin]);
 
-  return { isAdmin, loading, error }; // Return admin status, loading, and error
+  return { isAdmin, setIsAdmin, loading, error }; // Return admin status, loading, and error
 };
 
 export default useAdminAuth;

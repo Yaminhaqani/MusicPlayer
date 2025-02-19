@@ -13,6 +13,7 @@ const Navbar = () => {
   const [searchWidth, setSearchWidth] = useState(false);
   const [profileChange, setProfileChange] = useState(false)
   const {user, loggedIn, logout} = useContext(MyContext);
+  
 
 
   const navigate = useNavigate();
@@ -52,26 +53,29 @@ const handleprofileChange = ()=>{
           <GiHamburgerMenu className="text-white w-7 h-7" />
 
           <ul
-            className={`flex flex-col gap-2 absolute top-20 left-0 w-[70%] h-fit p-4 bg-black
+          // divide-y divide-red-300 → Adds a red border between all direct children (<li> elements).
+          // [&>li]:border [&>li]:border-red-300 selects all li elements
+            className={`flex flex-col [&>li]:py-1 divide-y divide-cyan-400  absolute top-20 left-0 w-[70%] h-fit p-4 bg-black
               ${
                 showSideNav
                   ? "animate__animated animate__slideInLeft"
                   : "animate__animated animate__slideOutLeft"
               } 
-              transition-transform duration-300 ease-in-out`}
+              transition-transform duration-300 ease-in-out`}  //transition is used so that it does'nt unmount instantly and animation can work.
           >
-            <li className="w-full h-fit border border-red-500 hover:bg-[rgb(42,42,42)]">
-              <button className="flex items-center">
-              <Link to="/AllSongs">
+            <li className="w-full h-fit hover:bg-[rgb(42,42,42)]">
+            <Link to="/AllSongs">
+              <button className="flex items-center"> 
                 <MdHomeFilled className="text-gray-50 h-5 w-5" />
-                </Link>
-                <span className="text-white ml-2">Home</span>
+                <span className="text-white ml-2">Home</span>    
               </button>
+              </Link>
               
             </li>
+
             
             {loggedIn && (
-              <li  className="w-full h-fit border border-red-500 hover:bg-[rgb(42,42,42)]">
+              <li  className="w-full h-fit hover:bg-[rgb(42,42,42)]">
                 <button 
                     onClick={handleLogout}
                     className="flex items-center"
@@ -155,12 +159,17 @@ onClick={()=>setProfileChange(!profileChange)}
       : "animate__animated animate__fadeOutUp opacity-0 invisible"}
     transition-all duration-300 ease-in-out`}
 >
+{user.isAdmin &&<li>
+    <Link to="/admin/dashboard">Dashboard</Link>
+  </li>}
+
 <li>
     <Link to="/user/settings">Settings</Link>
   </li>
   <li>
     <Link to="/user-playlists">Playlists</Link>
   </li>
+  
   
 </ul>
       

@@ -4,15 +4,17 @@ import { IoPause } from "react-icons/io5";
 import { FaPlay } from "react-icons/fa";
 import React, { useContext } from 'react'
 import { AudioContext } from "../context/AudioContext";
+import { MyContext } from "../context/Context";
 
 const AudioControls = () => {
 
 
     const {isControlsVisible, handlePrevious, handlePlayPause, handleNext, audioProgress, handleProgressChange, formatDuration, audioRef, songs, currentSong, isPlaying} = useContext(AudioContext);
+    const {loggedIn} = useContext(MyContext)
 
   return (
     <div>
-        {isControlsVisible && (
+        {isControlsVisible && loggedIn && (
     <div className="audio-controls fixed bottom-0 w-full bg-gray-800 p-4 flex items-center justify-between text-white">
       <div className="buttons border border-white w-[10%] flex justify-between">
       <button onClick={handlePrevious} className="text-white">

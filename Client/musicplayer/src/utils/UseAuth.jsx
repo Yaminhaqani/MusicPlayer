@@ -35,6 +35,7 @@ const UseAuth = () => {
             },
           }
         );
+        
 
         if (response.status === 200) {
           // Log success message from backend if token is valid
