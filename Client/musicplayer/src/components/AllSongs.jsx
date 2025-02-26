@@ -90,9 +90,9 @@ const AllSongs = () => {
     }
   };
 
-  // Handle removing a song (only available for admin users)
+  // Handle removing a song (only available for admin)
   const handleRemoveSong = async (songId) => {
-    // Implement removal logic here if needed
+    
     console.log(`Remove song: ${songId}`);
     setShowOptionsMenu(null); // Close options menu after removal action
   };
