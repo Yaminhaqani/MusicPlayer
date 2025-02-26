@@ -19,24 +19,21 @@ const userSchema = new mongoose.Schema({
 
 
 
-// Let’s say you have a new feature in your app where you want to regenerate the token after some action (e.g., updating user profile), instead of rewriting the token generation logic everywhere, you just call generateAuthToken() from the User schema.
+// Let’s say we have a new feature in our app where we want to regenerate the token after some action (e.g., updating user profile), instead of rewriting the token generation logic everywhere, we just call generateAuthToken() from the User schema.
 
-// javascript
-// Copy code
 // const user = await User.findById(userId);
 // const token = user.generateAuthToken();  // Reusing the token generation logic
 
 
-// If You Did It Directly in the Login Handler:
-// If you generate the token directly in the login handler, you would have to do the following:
-// javascript
-// Copy code
+// If We Did It Directly in the Login Handler:
+// If we generate the token directly in the login handler, we would have to do the following:
+
 // const token = jwt.sign(
 //   { _id: findUser._id, name: findUser.name, isAdmin: findUser.isAdmin },
 //   process.env.JWTPRIVATEKEY,
 //   { expiresIn: "7d" }
 // );
-// This works, but it means you're duplicating that logic every time you need to generate a token (e.g., registration, password reset, etc.). It also makes the login handler a bit messier by handling more responsibilities (token generation).
+// This works, but it means we duplicating that logic every time we need to generate a token (e.g., registration, password reset, etc.). It also makes the login handler a bit messier by handling more responsibilities (token generation).
 
 
 
