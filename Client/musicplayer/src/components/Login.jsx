@@ -59,7 +59,7 @@ const Login = () => {
       }
 
   return (
-    <div className='Register flex w-full h-[87.3vh] justify-center items-center bg-gray-950 border-t-2 border-gray-800 font-roboto'>
+    <div className='Register flex w-full h-[88.6vh] justify-center items-center bg-gray-950 border-t-2 border-gray-800 font-roboto'>
 
         <form className='w-[300px] border border-gray-700 px-2 rounded-xl sm:w-[450px]'>
 
