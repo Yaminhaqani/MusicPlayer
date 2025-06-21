@@ -2,7 +2,5 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],
-  "build": {
-    "ignoreCommand": "echo 1"
-  }
+  "ignoreBuildStep": "echo 1"
 }
