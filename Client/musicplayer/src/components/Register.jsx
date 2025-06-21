@@ -58,7 +58,7 @@ const url = `${process.env.REACT_APP_API_URL}/user/register`;
   };
 
   return (
-    <div className="Register flex w-full h-[89vh] justify-center items-center bg-gray-950 border-t-2 border-gray-800 font-roboto">
+    <div className="Register flex w-full h-[88.6vh] justify-center items-center bg-gray-950 border-t-2 border-gray-800 font-roboto">
       <form className="w-[300px] border border-gray-700 px-2 rounded-xl sm:w-[450px]">
         <h1 className="mb-4 text-gray-200 text-2xl text-center ">
           Create your account
