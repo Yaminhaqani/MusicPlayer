@@ -71,7 +71,7 @@ const PlaylistDetails = () => {
           return;
         }
         const response = await axios.get(
-         `${process.env.REACT_APP_API_URL}/playlist/${playlistId}`
+         `${process.env.REACT_APP_API_URL}/playlist/${playlistId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setPlaylist(response.data);
