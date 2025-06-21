@@ -27,7 +27,7 @@ const ChangePass = () => {
 
     try {
       setLoading(true);
-      const url = "http://localhost:4000/user/passChange";
+      const url = `${process.env.REACT_APP_API_URL}/user/passChange`;
       const response = await axios.post(
         url, formData,
 
