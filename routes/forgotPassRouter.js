@@ -1,7 +1,7 @@
 const express = require("express");
 const crypto = require("crypto");
 const { User } = require("../models/user");
-const { transporter } = require("../utils/nodemailer");
+const { transporter } = require("../utils/nodeMailer");
 
 const router = express.Router();
 
