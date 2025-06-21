@@ -30,7 +30,7 @@ const ProfilePic = () => {
 
         try {
             const token= localStorage.getItem("token");
-            const url = "http://localhost:4000/user/profilePicture";
+           const url = `${process.env.REACT_APP_API_URL}/user/profilePicture`;
             const response = await axios.post(url, formData,{
                 headers: {
                   "Content-Type": "multipart/form-data",
