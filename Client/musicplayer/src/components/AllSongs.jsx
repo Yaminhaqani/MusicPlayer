@@ -22,7 +22,8 @@ const AllSongs = () => {
   const { songs, setSongs, currentSong, isPlaying, handlePlayPause, formatDuration, query } = useContext(AudioContext);
   const {isAdmin} = useAdminAuth()
 
-  const url = "http://localhost:4000/allSongs";
+  const url = `${process.env.REACT_APP_API_URL}/allSongs`;
+
 
   // Fetch all songs from the backend
   useEffect(() => {
@@ -53,9 +54,9 @@ const AllSongs = () => {
         toast.error("Authentication token missing. Please log in again.");
         return;
       }
-      const response = await axios.get("http://localhost:4000/user/playlists", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/playlists`, {
+  headers: { Authorization: `Bearer ${token}` },
+});
       setPlaylists(response.data);
       setShowPlaylistPopup(true); // Open playlist selection popup
     } catch (error) {
@@ -77,11 +78,11 @@ const AllSongs = () => {
       if (!token) {
         return toast.error("Authentication token missing. Please log in again.");
       }
-      await axios.post(
-        `http://localhost:4000/${playlistId}/add-song`,
-        { songId: selectedSong._id },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+     await axios.post(
+  `${process.env.REACT_APP_API_URL}/${playlistId}/add-song`,
+  { songId: selectedSong._id },
+  { headers: { Authorization: `Bearer ${token}` } }
+);
       toast.success("Song added to playlist!");
       setShowPlaylistPopup(false); // Close the playlist selection popup
     } catch (error) {
