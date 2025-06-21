@@ -76,7 +76,7 @@ const UploadSong = () => {
       formData.append("song", songFile); // This is the song file
       formData.append("img", imgFile); // This is the image file
 
-      const url = "http://localhost:4000/admin/UploadSong";
+     const url = `${process.env.REACT_APP_API_URL}/admin/UploadSong`;
 
       const response = await axios.post(url, formData, {
         headers: {
