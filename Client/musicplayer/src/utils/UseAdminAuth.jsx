@@ -18,7 +18,7 @@ const useAdminAuth = () => {
         }
 
         const response = await axios.post(
-          "http://localhost:4000/admin",
+          `${process.env.REACT_APP_API_URL}/admin`,
           {},
           {
             headers: {
