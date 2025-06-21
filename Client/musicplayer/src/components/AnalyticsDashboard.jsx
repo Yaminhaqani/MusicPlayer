@@ -19,6 +19,9 @@ import { MyContext } from '../context/Context';
 import { useNavigate } from 'react-router-dom';
 
 
+ const BASE_URL = process.env.REACT_APP_API_URL;
+
+
 
 // Register Chart.js components
 ChartJS.register(
@@ -58,7 +61,7 @@ const AnalyticsDashboard = () => {
           return;
         }
 
-      const res = await axios.get('http://localhost:4000/api/analytics/users/daily',
+      const res = await axios.get(`${BASE_URL}/api/analytics/users/daily`,
        { headers: {
         Authorization: `Bearer ${token}`,
           },}
@@ -94,7 +97,7 @@ const AnalyticsDashboard = () => {
           return;
         }
 
-      const res = await axios.get('http://localhost:4000/api/analytics/songs/daily',
+      const res = await axios.get('`${BASE_URL}/api/analytics/songs/daily`,
         { headers: {
             Authorization: `Bearer ${token}`,
               },}
