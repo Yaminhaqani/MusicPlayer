@@ -19,7 +19,7 @@ const Register = () => {
     birthDate: dob,
   };
 
-  const url = "http://localhost:4000/user/register";
+const url = `${process.env.REACT_APP_API_URL}/user/register`;
 
   const navigate = useNavigate();
 
