@@ -65,7 +65,7 @@ app.use('/api/analytics', analyticsRoutes);
 
 app.get("/allSongs", getAllSongs);
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 4000;
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server listening on http://0.0.0.0:${port}`);
 });
