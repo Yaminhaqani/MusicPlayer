@@ -25,7 +25,7 @@ const AdminAllUsers = () => {
           return;
         }
 
-        const url = "http://localhost:4000/admin/allUserInfo";
+        const url = `${process.env.REACT_APP_API_URL}/admin/allUserInfo`;
         const res = await axios.get(url, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -56,7 +56,7 @@ try {
     return toast.error("Authentication token missing. Please log in again.");
   }
 
-  const url = `http://localhost:4000/admin/${userId}/delete`;
+  const url = `${process.env.REACT_APP_API_URL}/admin/${userId}/delete`;
   const res = await axios.delete(url,{
     headers:{Authorization : `Bearer ${token}`},
   });
