@@ -40,7 +40,7 @@ const UserPlaylists = () => {
   );
 
   return (
-    <div className="user-playlists p-4 min-h-screen">
+    <div className="user-playlists p-4 h-[88.5vh]">
       <h2 className="text-xl font-bold mb-4">Your Playlists</h2>
 
       {filteredPlaylists.length === 0 ? (
