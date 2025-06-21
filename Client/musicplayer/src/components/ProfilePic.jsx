@@ -72,7 +72,7 @@ const ProfilePic = () => {
   };
 
   return (
-    <div className='flex flex-col gap-3 w-full h-[87.3vh] justify-center items-center bg-gray-950 border-t-2 border-gray-800 font-roboto pb-[4rem] text-gray-200'>
+    <div className='flex flex-col gap-3 w-full h-[88vh] justify-center items-center bg-gray-950 border-t-2 border-gray-800 font-roboto pb-[4rem] text-gray-200'>
       <h2 className='mb-4 text-2xl text-center'>Update Profile Picture</h2>
 
       {/* Show preview if new image selected, else show current profile */}
