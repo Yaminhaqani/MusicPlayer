@@ -97,7 +97,7 @@ const AnalyticsDashboard = () => {
           return;
         }
 
-      const res = await axios.get('`${BASE_URL}/api/analytics/songs/daily`,
+      const res = await axios.get(`${BASE_URL}/api/analytics/songs/daily`,
         { headers: {
             Authorization: `Bearer ${token}`,
               },}
