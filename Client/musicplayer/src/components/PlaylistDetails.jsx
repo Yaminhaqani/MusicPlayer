@@ -108,7 +108,7 @@ const PlaylistDetails = () => {
 
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-950 overflow-y-auto font-roboto pb-[3.25rem] text-gray-200">
+    <div className="flex flex-col items-center h-[87.3vh] bg-gray-950 overflow-y-auto font-roboto pb-[3.25rem] text-gray-200">
       <button
         onClick={() => navigate(-1)}
         className="mb-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded"
