@@ -11,7 +11,7 @@ const ForgotPass = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const url = "http://localhost:4000/user/forgotPass";
+      const url = `${process.env.REACT_APP_API_URL}/user/forgotPass`;
       const response = await axios.post(url, { email });
       toast.success(response.data.message);
     } catch (error) {
