@@ -16,7 +16,7 @@ const UseAuth = () => {
       }
 
       try {
-        const url = "http://localhost:4000/user/verify";
+        const url = `${process.env.REACT_APP_API_URL}/user/verify`;
 
         // for get method
         // const response = await axios.get(url, {
