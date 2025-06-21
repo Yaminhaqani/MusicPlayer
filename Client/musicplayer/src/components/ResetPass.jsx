@@ -13,7 +13,7 @@ const ResetPass = () => {
   const handleResetPassword = async (e) => {
     e.preventDefault();
 
-    const url= `http://localhost:4000/user/resetPass/${id}`
+   const url = `${process.env.REACT_APP_API_URL}/user/resetPass/${id}`;
 
     try {
       const response = await axios.post(url, {
