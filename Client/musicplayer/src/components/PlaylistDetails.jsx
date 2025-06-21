@@ -38,7 +38,7 @@ const PlaylistDetails = () => {
       }
 
       const response = await axios.delete(
-        `http://localhost:4000/${playlistId}/remove-song`,
+        `${process.env.REACT_APP_API_URL}/${playlistId}/remove-song`,
         {
           headers: { Authorization: `Bearer ${token}` },
           data: { songId },
@@ -71,7 +71,7 @@ const PlaylistDetails = () => {
           return;
         }
         const response = await axios.get(
-          `http://localhost:4000/playlist/${playlistId}`,
+         `${process.env.REACT_APP_API_URL}/playlist/${playlistId}`
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setPlaylist(response.data);
