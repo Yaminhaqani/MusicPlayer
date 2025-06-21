@@ -47,7 +47,7 @@ const UserPlaylist = () => {
         if (imgFile) formData.append("img", imgFile);
         
         const token = localStorage.getItem("token"); //necessary for backend logic of playlist user._id
-        const url="http://localhost:4000/user/createPlaylist";
+       const url = `${process.env.REACT_APP_API_URL}/user/createPlaylist`;
 
         const response = await axios.post(url , formData , {
             headers: {
