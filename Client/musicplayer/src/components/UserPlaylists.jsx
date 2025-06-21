@@ -16,7 +16,7 @@ const UserPlaylists = () => {
         if (!token) {
           return toast.error("Authentication token missing. Please log in again.");
         }
-        const response = await axios.get("http://localhost:4000/user/playlists", {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/playlists`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setPlaylists(response.data);
