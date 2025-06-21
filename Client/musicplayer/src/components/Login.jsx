@@ -17,7 +17,7 @@ const Login = () => {
       const handleLogin = async (e)=>{
         e.preventDefault();
 
-        const url = "http://localhost:4000/user/login";
+        const url = `${process.env.REACT_APP_API_URL}/user/login`;
         const formData = {email , password};
 
         try {
