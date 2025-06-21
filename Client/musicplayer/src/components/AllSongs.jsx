@@ -116,7 +116,7 @@ const AllSongs = () => {
   });
 
   return (
-    <div className='songs-container flex flex-col items-center py-3 bg-gray-950 overflow-y-auto font-roboto pb-[3.25rem] w-full h-[87.3vh]'>
+    <div className='songs-container flex flex-col items-center py-3 bg-gray-950 overflow-y-auto font-roboto pb-[3.25rem] w-full h-[89vh]'>
 
       {/* Header Row */}
       <div className="flex justify-between text-gray-300 w-[85%] sm:w-[50%] py-2 border-b border-gray-700 mb-4">
