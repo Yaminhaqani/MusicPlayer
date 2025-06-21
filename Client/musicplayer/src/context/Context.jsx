@@ -38,7 +38,7 @@ const MyProvider = ({children})=>{
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          const response = await axios.get("http://localhost:4000/user/details", {
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/details`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setUser(response.data);
@@ -50,8 +50,8 @@ const MyProvider = ({children})=>{
     fetchUser();
   }, [loggedIn]);
 
-  const totalUsersUrl = "http://localhost:4000/admin/total-users";
-  const totalSongsUrl = "http://localhost:4000/admin/total-songs";
+const totalUsersUrl = `${process.env.REACT_APP_API_URL}/admin/total-users`;
+const totalSongsUrl = `${process.env.REACT_APP_API_URL}/admin/total-songs`;
 
   
 
