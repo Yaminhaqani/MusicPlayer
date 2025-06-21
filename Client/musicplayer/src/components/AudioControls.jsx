@@ -16,7 +16,7 @@ const AudioControls = () => {
     <div>
         {isControlsVisible && loggedIn && (
     <div className="audio-controls fixed bottom-0 w-full bg-gray-800 p-4 flex items-center justify-between text-white">
-      <div className="buttons border border-white w-[10%] flex justify-between">
+      <div className="buttons w-[10%] flex justify-between">
       <button onClick={handlePrevious} className="text-white">
         <FaBackwardStep className="h-5 w-5" />
       </button>
