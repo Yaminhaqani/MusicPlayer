@@ -1,6 +1,6 @@
 # 📚 Groove Frontend (React)
 
-This is the frontend of the Groove music player application, built using **React** and deployed on **Vercel**(https://groove-bay.vercel.app/AllSongs).
+This is the frontend of the Groove music player application, built using **React** and deployed on **Vercel**(https://music-player-wheat-five.vercel.app/).
 
 ---
 
