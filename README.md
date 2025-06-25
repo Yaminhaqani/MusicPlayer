@@ -125,6 +125,14 @@ npm run dev
 
 ---
 
+## 📧 Contact
+
+Developed by **Yamin Haqani**.
+Email: [yaminhaqani@gmail.com](mailto:yaminhaqani@gmail.com)
+GitHub: [@Yaminhaqani](https://github.com/Yaminhaqani)
+
+---
+
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
