@@ -4,7 +4,7 @@ Groove is a full-featured MERN (MongoDB, Express, React, Node.js) music player a
 
 🚀 **Deployed on**:
 
-* **Frontend**: Vercel (https://groove-bay.vercel.app/AllSongs)
+* **Frontend**: Vercel (https://music-player-wheat-five.vercel.app/)
 * **Backend**: Render
 
 > Note: Necessary environment and deployment changes have been made to make the app fully compatible with Vercel and Render hosting platforms.
