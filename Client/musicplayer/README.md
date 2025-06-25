@@ -94,5 +94,6 @@ frontend/
 
 ## 📧 Contact
 
-Built by **Yaminhaqani**.
+Built by **Yamin Haqani**.
 For questions or suggestions, reach out at [yaminhaqani@gmail.com](mailto:yaminhaqani@gmail.com).
+GitHub: [@Yaminhaqani](https://github.com/Yaminhaqani)
