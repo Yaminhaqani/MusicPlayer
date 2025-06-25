@@ -90,9 +90,9 @@ CLIENT_URL=https://your-frontend-vercel-url
 
 ## 📧 Contact
 
-Developed by **Yamin Haqani**.
-Email: [yaminhaqani@gmail.com](mailto:yaminhaqani@gmail.com)
-GitHub: [@Yaminhaqani](https://github.com/Yaminhaqani)
+* Developed by **Yamin Haqani**.
+* Email: [yaminhaqani@gmail.com](mailto:yaminhaqani@gmail.com)
+* GitHub: [@Yaminhaqani](https://github.com/Yaminhaqani)
 
 ---
 
