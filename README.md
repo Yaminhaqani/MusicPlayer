@@ -127,9 +127,9 @@ npm run dev
 
 ## 📧 Contact
 
-Developed by **Yamin Haqani**.
-Email: [yaminhaqani@gmail.com](mailto:yaminhaqani@gmail.com)
-GitHub: [@Yaminhaqani](https://github.com/Yaminhaqani)
+* Developed by **Yamin Haqani**.
+* Email: [yaminhaqani@gmail.com](mailto:yaminhaqani@gmail.com)
+* GitHub: [@Yaminhaqani](https://github.com/Yaminhaqani)
 
 ---
 
